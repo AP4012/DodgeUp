@@ -45,22 +45,20 @@ public class DodgeUP extends PApplet{
     @Override
     public void setup() {
 
-
         processing = this;
-        Brick.speed = 5;
 
         Brick.makeBlocks();
         Heart.loadHeart();
         BackGround.loadBackgrounds();
         StickMan.loadStickMan();
         Star.loadStar();
-
+        Brick.speed = 5;
     }
 
     @Override
     public void settings() {
         size(700, 700);
-
+        smooth(8);
 
     }
 
@@ -383,8 +381,8 @@ public class DodgeUP extends PApplet{
 
     public void increaseSpeed() {
 
-        if (frameCount % 150 == 0) {
-            Brick.speed += 2;
+        if (frameCount % 300 == 0 && startChecker) {
+            Brick.speed ++;
         }
 
     }
