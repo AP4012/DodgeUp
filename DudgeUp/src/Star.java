@@ -1,5 +1,6 @@
 import processing.core.PImage;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Star {
@@ -21,7 +22,7 @@ public class Star {
 
         star = DodgeUP.processing.loadImage("images/star.png");
         Random random = new Random();
-
+        DodgeUP.stars = new ArrayList<>();
         for (int i=0 ; i<30 ; i++) {
             DodgeUP.stars.add(new Star(random.nextInt(10, 650), random.nextInt(-10000, -100 )));
         }
@@ -46,18 +47,21 @@ public class Star {
             if (DodgeUP.processing.mouseX >= s.starX && DodgeUP.processing.mouseX <= s.starX + Star.width &&
                     540 >= s.starY && 540 <= s.starY + Star.height) {
 
+                Sound.startScoreSound();
                 DodgeUP.stars.remove(s);
                 return true;
             }
             else if (DodgeUP.processing.mouseX+25 >= s.starX && DodgeUP.processing.mouseX+25 <= s.starX + Star.width &&
                     540 >= s.starY && 540 <= s.starY + Star.height) {
 
+                Sound.startScoreSound();
                 DodgeUP.stars.remove(s);
                 return true;
             }
             else if (DodgeUP.processing.mouseX-25 >= s.starX && DodgeUP.processing.mouseX-25 <= s.starX + Star.width &&
                     540 >= s.starY && 540 <= s.starY + Star.height) {
 
+                Sound.startScoreSound();
                 DodgeUP.stars.remove(s);
                 return true;
             }
@@ -65,6 +69,7 @@ public class Star {
             else if (DodgeUP.processing.mouseX-25 >= s.starX && DodgeUP.processing.mouseX-25 <= s.starX + Star.width &&
                     575 >= s.starY && 575 <= s.starY + Star.height) {
 
+                Sound.startScoreSound();
                 DodgeUP.stars.remove(s);
                 return true;
             }
@@ -72,6 +77,7 @@ public class Star {
             else if (DodgeUP.processing.mouseX+25 >= s.starX && DodgeUP.processing.mouseX+25 <= s.starX + Star.width &&
                     575 >= s.starY && 575 <= s.starY + Star.height) {
 
+                Sound.startScoreSound();
                 DodgeUP.stars.remove(s);
                 return true;
             }
@@ -79,6 +85,7 @@ public class Star {
             else if (DodgeUP.processing.mouseX >= s.starX && DodgeUP.processing.mouseX <= s.starX + Star.width &&
                     600 >= s.starY && 600 <= s.starY + Star.height) {
 
+                Sound.startScoreSound();
                 DodgeUP.stars.remove(s);
                 return true;
             }

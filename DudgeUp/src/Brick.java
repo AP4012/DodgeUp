@@ -75,6 +75,7 @@ public class Brick {
             if (DodgeUP.processing.mouseX >= b.brickX && DodgeUP.processing.mouseX <= b.brickX + Brick.brickWidth &&
                     565 >= b.brickY && 565 <= b.brickY + Brick.brickWidth) {
 
+                Sound.startHitSound();
                 DodgeUP.bricks.remove(b);
                 return true;
             }
@@ -82,6 +83,7 @@ public class Brick {
             else if (DodgeUP.processing.mouseX+25 >= b.brickX && DodgeUP.processing.mouseX+25 <= b.brickX + Brick.brickWidth &&
                     565 >= b.brickY && 565 <= b.brickY + Brick.brickWidth) {
 
+                Sound.startHitSound();
                 DodgeUP.bricks.remove(b);
                 return true;
             }
@@ -89,6 +91,7 @@ public class Brick {
             else if (DodgeUP.processing.mouseX-25 >= b.brickX && DodgeUP.processing.mouseX-25 <= b.brickX + Brick.brickWidth &&
                     565 >= b.brickY && 565 <= b.brickY + Brick.brickWidth) {
 
+                Sound.startHitSound();
                 DodgeUP.bricks.remove(b);
                 return true;
             }
@@ -96,6 +99,7 @@ public class Brick {
             else if (DodgeUP.processing.mouseX-25 >= b.brickX && DodgeUP.processing.mouseX-25 <= b.brickX + Brick.brickWidth &&
                     590 >= b.brickY && 590 <= b.brickY + Brick.brickWidth) {
 
+                Sound.startHitSound();
                 DodgeUP.bricks.remove(b);
                 return true;
             }
@@ -103,6 +107,7 @@ public class Brick {
             else if (DodgeUP.processing.mouseX+25 >= b.brickX && DodgeUP.processing.mouseX+25 <= b.brickX + Brick.brickWidth &&
                     590 >= b.brickY && 590 <= b.brickY + Brick.brickWidth) {
 
+                Sound.startHitSound();
                 DodgeUP.bricks.remove(b);
                 return true;
             }
@@ -110,6 +115,7 @@ public class Brick {
             else if (DodgeUP.processing.mouseX >= b.brickX && DodgeUP.processing.mouseX <= b.brickX + Brick.brickWidth &&
                     625 >= b.brickY && 625 <= b.brickY + Brick.brickWidth) {
 
+                Sound.startHitSound();
                 DodgeUP.bricks.remove(b);
                 return true;
             }

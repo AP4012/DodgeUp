@@ -17,6 +17,11 @@ public class DodgeUP extends PApplet{
     public static long score = 0;
     public static long highScore = Database.popHighScore();
 
+    public static boolean gameOverSound;
+    public static boolean winSound;
+    public static boolean hoverSound;
+
+
     public static boolean startOver = false;
     public static boolean retryOver = false;
     public static boolean exitOver = false;
@@ -47,9 +52,16 @@ public class DodgeUP extends PApplet{
 
         processing = this;
 
+        gameOverSound = true;
+        winSound = true;
+
+        BackGround.loadBackgrounds();
+        Sound.loadSounds();
+        Sound.startMainSound();
+
+
         Brick.makeBlocks();
         Heart.loadHeart();
-        BackGround.loadBackgrounds();
         StickMan.loadStickMan();
         Star.loadStar();
         Brick.speed = 5;
@@ -64,6 +76,7 @@ public class DodgeUP extends PApplet{
 
     @Override
     public void draw() {
+
 
         startMenu();
         updateCoordinates();
@@ -93,6 +106,9 @@ public class DodgeUP extends PApplet{
             Heart.showHeart();
             BackGround.showBackground2();
 
+        }
+        else {
+            frameCount = 0;
         }
 
 
@@ -135,7 +151,6 @@ public class DodgeUP extends PApplet{
 
         mouseHover();
 
-
         PFont font = createFont("Serif.bold", 30);
         textFont(font);
 
@@ -163,6 +178,14 @@ public class DodgeUP extends PApplet{
     public void win() {
 
         if (bricks.size() == 0 ) {
+            Sound.stopMainSound();
+
+            if (winSound) {
+                Sound.startWinSound();
+                winSound = false;
+            }
+
+
             startChecker = false;
             endMenuActivator = true;
 
@@ -181,6 +204,14 @@ public class DodgeUP extends PApplet{
     public void gameOver() {
 
         if (Heart.lives == 0) {
+            Sound.stopMainSound();
+
+            if (gameOverSound) {
+                Sound.startLoseSound();
+                gameOverSound = false;
+            }
+
+
             startChecker = false;
             endMenuActivator = true;
 
@@ -193,7 +224,6 @@ public class DodgeUP extends PApplet{
             text("GameOver!", 200, 150);
 
             endMenu();
-
         }
 
     }
@@ -202,8 +232,6 @@ public class DodgeUP extends PApplet{
 
     public void showScore() {
         DodgeUP.processing.noStroke();
-
-
 
         for (int i=0 ; i<bricks.size() ; i++) {
             if (bricks.get(i).getBrickY() >= 600) {
@@ -270,15 +298,16 @@ public class DodgeUP extends PApplet{
     }
 
 
-
     public void mousePressed() {
 
         if (startMenuActivator) {
             if (startOver) {
+                Sound.startClickSound();
                 startChecker = true;
                 startMenuActivator = false;
             }
             else if (exitOver) {
+                Sound.startClickSound();
                 exit();
             }
         }
@@ -286,18 +315,27 @@ public class DodgeUP extends PApplet{
 
         else if (endMenuActivator) {
             if (retryOver) {
+                Sound.startClickSound();
+                Sound.stopLoseSound();
+                Sound.stopWinSound();
+
                 startChecker = true;
                 endMenuActivator = false;
                 restart();
             }
 
             else if (mainMenuOver) {
+                Sound.startClickSound();
+                Sound.stopLoseSound();
+                Sound.stopWinSound();
+
                 endMenuActivator = false;
                 startMenuActivator = true;
                 restart();
             }
 
             else if (exitOver) {
+                Sound.startClickSound();
                 exit();
             }
         }
@@ -308,12 +346,20 @@ public class DodgeUP extends PApplet{
         if (endMenuActivator) {
             if (retryOver) {
                 startColor = new Color(7, 252, 3);
+                if (hoverSound) {
+                    Sound.startHoverSound();
+                    hoverSound = false;
+                }
             }
             else {
                 startColor = new Color(252, 252, 252);
             }
 
             if (mainMenuOver) {
+                if (hoverSound) {
+                    Sound.startHoverSound();
+                    hoverSound = false;
+                }
                 mainMenuColor = new Color(8, 36, 252);
             }
             else {
@@ -321,16 +367,30 @@ public class DodgeUP extends PApplet{
             }
 
             if (exitOver) {
+                if (hoverSound) {
+                    Sound.startHoverSound();
+                    hoverSound = false;
+                }
                 exitColor = new Color(252, 3, 3);
             }
             else {
                 exitColor = new Color(252, 252, 252);
             }
+
+            if (!exitOver && !retryOver && !mainMenuOver) {
+                hoverSound = true;
+            }
+
+
         }
 
         else if(startMenuActivator){
             if (startOver) {
                 startColor = new Color(7, 252, 3);
+                if (hoverSound) {
+                    Sound.startHoverSound();
+                    hoverSound = false;
+                }
             }
             else {
                 startColor = new Color(0, 0, 0);
@@ -338,10 +398,20 @@ public class DodgeUP extends PApplet{
 
             if (exitOver) {
                 exitColor = new Color(252, 3, 3);
+                if (hoverSound) {
+                    Sound.startHoverSound();
+                    hoverSound = false;
+                }
             }
             else {
                 exitColor = new Color(0, 0, 0);
             }
+
+            if (!exitOver && !startOver) {
+                hoverSound = true;
+            }
+
+
         }
 
 
@@ -374,14 +444,12 @@ public class DodgeUP extends PApplet{
 
     public void restart() {
         score = 0;
-
         setup();
-
     }
 
     public void increaseSpeed() {
 
-        if (frameCount % 300 == 0 && startChecker) {
+        if (frameCount % 600 == 0) {
             Brick.speed ++;
         }
 
