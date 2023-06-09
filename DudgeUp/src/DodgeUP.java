@@ -60,7 +60,7 @@ public class DodgeUP extends PApplet{
         Sound.startMainSound();
 
 
-        Brick.makeBlocks();
+        Brick.makeBricks();
         Heart.loadHeart();
         StickMan.loadStickMan();
         Star.loadStar();
@@ -84,8 +84,8 @@ public class DodgeUP extends PApplet{
         if (startChecker) {
             BackGround.showBackground1();
 
-            Brick.showBlock();
-            Brick.moveBlock();
+            Brick.showBricks();
+            Brick.moveBricks();
 
             Star.showStar();
             Star.moveStar();

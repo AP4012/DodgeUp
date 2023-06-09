@@ -24,7 +24,7 @@ public class Brick {
         this.brickColorB = brickColorB;
     }
 
-    public static void makeBlocks() {
+    public static void makeBricks() {
         Random random = new Random();
         DodgeUP.bricks = new ArrayList<>();
         int speedY = -100;
@@ -52,7 +52,7 @@ public class Brick {
         }
     }
 
-    public static void showBlock() {
+    public static void showBricks() {
         for (Brick b: DodgeUP.bricks) {
             DodgeUP.processing.noStroke();
             DodgeUP.processing.fill(b.brickColorR, b.brickColorG, b.brickColorB);
@@ -60,7 +60,7 @@ public class Brick {
         }
     }
 
-    public static void moveBlock() {
+    public static void moveBricks() {
 
         for (Brick b: DodgeUP.bricks) {
             b.brickY += speed;
