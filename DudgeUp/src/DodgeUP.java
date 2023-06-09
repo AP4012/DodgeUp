@@ -177,7 +177,7 @@ public class DodgeUP extends PApplet{
 
     public void win() {
 
-        if (bricks.size() == 0 ) {
+        if (bricks.size() == 0 && Heart.lives > 0) {
             Sound.stopMainSound();
 
             if (winSound) {
