@@ -45,21 +45,21 @@ public class Star {
         for (Star s: DodgeUP.stars) {
 
             if (DodgeUP.processing.mouseX >= s.starX && DodgeUP.processing.mouseX <= s.starX + Star.width &&
-                    540 >= s.starY && 540 <= s.starY + Star.height) {
+                    530 >= s.starY && 530 <= s.starY + Star.height) {
 
                 Sound.startScoreSound();
                 DodgeUP.stars.remove(s);
                 return true;
             }
             else if (DodgeUP.processing.mouseX+25 >= s.starX && DodgeUP.processing.mouseX+25 <= s.starX + Star.width &&
-                    540 >= s.starY && 540 <= s.starY + Star.height) {
+                    530 >= s.starY && 530 <= s.starY + Star.height) {
 
                 Sound.startScoreSound();
                 DodgeUP.stars.remove(s);
                 return true;
             }
             else if (DodgeUP.processing.mouseX-25 >= s.starX && DodgeUP.processing.mouseX-25 <= s.starX + Star.width &&
-                    540 >= s.starY && 540 <= s.starY + Star.height) {
+                    530 >= s.starY && 530 <= s.starY + Star.height) {
 
                 Sound.startScoreSound();
                 DodgeUP.stars.remove(s);
@@ -67,7 +67,7 @@ public class Star {
             }
 
             else if (DodgeUP.processing.mouseX-25 >= s.starX && DodgeUP.processing.mouseX-25 <= s.starX + Star.width &&
-                    575 >= s.starY && 575 <= s.starY + Star.height) {
+                    565 >= s.starY && 565 <= s.starY + Star.height) {
 
                 Sound.startScoreSound();
                 DodgeUP.stars.remove(s);
@@ -75,7 +75,7 @@ public class Star {
             }
 
             else if (DodgeUP.processing.mouseX+25 >= s.starX && DodgeUP.processing.mouseX+25 <= s.starX + Star.width &&
-                    575 >= s.starY && 575 <= s.starY + Star.height) {
+                    565 >= s.starY && 556 <= s.starY + Star.height) {
 
                 Sound.startScoreSound();
                 DodgeUP.stars.remove(s);
